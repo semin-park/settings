@@ -57,7 +57,7 @@ nmap <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " Activate NERDTree when vim starts
-" autocmd vimenter * NERDTree
+autocmd vimenter * NERDTree
 
 " Let the searched item be highlighted in this color
 hi Search ctermbg=24
