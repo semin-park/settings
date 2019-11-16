@@ -9,16 +9,14 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'easymotion/vim-easymotion'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'tomasiser/vim-code-dark'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'scrooloose/nerdtree'
 Plugin 'haya14busa/incsearch.vim'
-Plugin 'fs111/pydoc.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'nvie/vim-flake8'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -26,26 +24,49 @@ filetype plugin indent on    " required
 
 " Basic settings
 syntax on
-colorscheme codedark
+colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_invert_selection=0
+
+set background=dark
+
+set cursorline
 set incsearch
 set hlsearch
 set number
+set noshowmode
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 " For convenient movement
-nnoremap <silent> <c-j> 4j
-nnoremap <silent> <c-k> 4k
+nnoremap <silent> <C-d> 10<C-d>
+nnoremap <silent> <C-u> 10<C-u>
+nnoremap <silent> <C-j> 4j
+nnoremap <silent> <C-k> 4k
+nnoremap <silent> <C-e> 4<C-e>
+nnoremap <silent> <C-y> 4<C-y>
 nnoremap <silent> <C-h> :tabprevious<CR>
 nnoremap <silent> <C-l> :tabnext<CR>
+nnoremap <silent> <C-c><C-c> :nohls<CR>
+nnoremap <silent> <C-w>mh :-tabmove<CR>
+nnoremap <silent> <C-w>ml :+tabmove<CR>
+nnoremap <silent> i :nohls<CR>i
+nnoremap <silent> <C-f> :NERDTreeToggle<CR>
+nmap <silent> T <C-k>zt<C-j>
 
 " Allow number-line toggling, so that I can copy to system clipboard
-nnoremap <silent> <c-n> :set number!<CR>:GitGutterToggle<CR>
-nmap <silent> T <c-k>zt<c-j>
+nnoremap <silent> <C-n> :set number!<CR>:SignifyToggle<CR>
 
 " Let Visual Block mode to persist after >, <
 vnoremap < <gv
 vnoremap > >gv
 vnoremap // y/<C-R>"<CR>
-nnoremap i :nohls<CR>i
+
+" incsearch tuning
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " Easymotion tuning
 nmap <Space> <leader>
@@ -56,21 +77,16 @@ nmap <Leader>k <Plug>(easymotion-k)
 nmap <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
-" Activate NERDTree when vim starts
-" autocmd vimenter * NERDTree
-
 " Let the searched item be highlighted in this color
 hi Search ctermbg=24
-
 " Navigation in Insert mode
-inoremap <c-e> <c-o>$
-inoremap <c-a> <c-o>^
-inoremap <c-h> <Left> 
-inoremap <c-j> <Down>
-inoremap <c-k> <Up>
-inoremap <c-l> <Right>
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
+inoremap <C-h> <Left> 
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
 
 " Let Backspace work as intended
 set backspace=indent,eol,start
 nnoremap <BS> X
-
