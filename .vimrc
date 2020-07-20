@@ -17,6 +17,8 @@ Plugin 'haya14busa/incsearch.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'nvie/vim-flake8'
 Plugin 'morhetz/gruvbox'
+Plugin 'mattn/emmet-vim'
+Plugin 'pangloss/vim-javascript'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -29,7 +31,7 @@ let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_invert_selection=0
 
 set background=dark
-
+set autoread
 set cursorline
 set incsearch
 set hlsearch
@@ -40,8 +42,6 @@ set shiftwidth=4
 set expandtab
 
 " For convenient movement
-nnoremap <silent> <C-d> 10<C-d>
-nnoremap <silent> <C-u> 10<C-u>
 nnoremap <silent> <C-j> 4j
 nnoremap <silent> <C-k> 4k
 nnoremap <silent> <C-e> 4<C-e>
@@ -53,7 +53,12 @@ nnoremap <silent> <C-w>mh :-tabmove<CR>
 nnoremap <silent> <C-w>ml :+tabmove<CR>
 nnoremap <silent> i :nohls<CR>i
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
-nmap <silent> T <C-k>zt<C-j>
+nmap <silent> T zt
+
+" For easy copy & paste
+vnoremap <silent> <Leader>y "*y
+vnoremap <silent> <Leader>p "*p
+nnoremap <silent> <Leader>p "*p
 
 " Allow number-line toggling, so that I can copy to system clipboard
 nnoremap <silent> <C-n> :set number!<CR>:SignifyToggle<CR>
@@ -69,7 +74,8 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 " Easymotion tuning
-nmap <Space> <leader>
+vmap <Space> <Leader>
+nmap <Space> <Leader>
 nmap <Leader> <Plug>(easymotion-prefix)
 nmap <Leader>l <Plug>(easymotion-lineforward)
 nmap <Leader>j <Plug>(easymotion-j)
@@ -82,7 +88,7 @@ hi Search ctermbg=24
 " Navigation in Insert mode
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
-inoremap <C-h> <Left> 
+inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
@@ -90,3 +96,15 @@ inoremap <C-l> <Right>
 " Let Backspace work as intended
 set backspace=indent,eol,start
 nnoremap <BS> X
+
+" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
+" Close scratch buffer after completion
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+let NERDTreeIgnore = ['__pycache__']
+
+" emmet
+let g:user_emmet_leader_key='<C-x>'
