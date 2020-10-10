@@ -21,6 +21,7 @@ Plugin 'mhinz/vim-signify'
 Plugin 'preservim/nerdtree'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'kevinoid/vim-jsonc'
 
 " Language specific plugins
 " Plugin 'mattn/emmet-vim'   " HTML expander
@@ -30,7 +31,6 @@ Plugin 'vim-airline/vim-airline'
 " Plugin 'prettier/vim-prettier' " Works for JS, TS, less, scss, css, json, graphql and markdown
 " Plugin 'fatih/vim-go'
 " Plugin 'petrbroz/vim-glsl' " OpenGL
-" Plugin 'elzr/vim-json'
 
 " Colorscheme
 Plugin 'kaicataldo/material.vim'
