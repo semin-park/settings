@@ -33,7 +33,8 @@ Plugin 'kevinoid/vim-jsonc'
 " Plugin 'petrbroz/vim-glsl' " OpenGL
 
 " Colorscheme
-Plugin 'kaicataldo/material.vim'
+" Plugin 'kaicataldo/material.vim'
+Plugin 'morhetz/gruvbox'
 
 " Unused
 " Plugin 'ryanoasis/vim-devicons' " Slow if I remember correctly
@@ -46,8 +47,8 @@ filetype plugin indent on    " required
 " Basic settings
 syntax on
 set background=dark
-let g:material_theme_style = 'darker'
-colorscheme material
+" let g:material_theme_style = 'darker'
+colorscheme gruvbox
 
 set autoread
 set cursorline
