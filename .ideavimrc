@@ -1,0 +1,44 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" Basic settings
+syntax on
+set autoread
+set cursorline
+set incsearch
+set hlsearch
+set number
+set noshowmode
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" For convenient movement
+nnoremap <silent> <C-j> 4j
+nnoremap <silent> <C-k> 4k
+nnoremap <silent> <C-e> 4<C-e>
+nnoremap <silent> <C-y> 4<C-y>
+nnoremap <silent> <C-h> :tabprevious<CR>
+nnoremap <silent> <C-l> :tabnext<CR>
+nnoremap <silent> <C-c><C-c> :nohls<CR>
+nnoremap <silent> <C-w>mh :-tabmove<CR>
+nnoremap <silent> <C-w>ml :+tabmove<CR>
+nnoremap <silent> i :nohls<CR>i
+nnoremap <silent> <C-f> :NERDTreeToggle<CR>
+nmap <silent> T zt
+
+" Let Visual Block mode to persist after >, <
+vnoremap < <gv
+vnoremap > >gv
+vnoremap // y/<C-R>"<CR>
+
+" Navigation in Insert mode
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
+
+" Let Backspace work as intended
+set backspace=indent,eol,start
+autocmd FileType html setlocal ts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=2 sw=2 expandtab
+autocmd FileType typescript setlocal ts=2 sw=2 expandtab
+nnoremap <BS> X
